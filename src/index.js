@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-
+import Firebase, { FirebaseContext } from './components/Firebase';
 ReactDOM.render(
-  <React.StrictMode>
+  //Firebase is only instantiated once and it is injected via React's Context API to React's component tree. Now, every component has access to the Firebase instance with a FirebaseContext.Consumer method. 
+  <FirebaseContext.Provider value={new Firebase()}>
     <App />
-  </React.StrictMode>,
+  </FirebaseContext.Provider>,
   document.getElementById('root')
 );
 
